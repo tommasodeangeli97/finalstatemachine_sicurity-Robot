@@ -28,4 +28,4 @@ The node subscribe to the boolean `"/room"` topic that indicates the presence of
 when the robot leaves the 'E' room the code waits a random time before indicating that the battery is low publishing *True* on the `"/battery"` topic.  
 
 # The state machine
-This is the node where the behaviour of the robot is created.
+This is the node where the behaviour of the robot is created as it's shown in this video
