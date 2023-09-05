@@ -19,7 +19,7 @@ The `ROOM` is a `LOCATION` with only one `DOOR`, the `CORRIDOR` is a `LOCATION` 
 The map node creates five instances for the class ROOM ['E','R1','R2','R3','R4'] that are connected with three CORRIDOR ['C1','C2','C3']. 
 The 'E' room represent the initial and the charging room and is connected only with the 'C1' corridor.
 The 'C1' corridor is connected with the others two corridors 'C2', 'C3' that have doors in common, respectivily, with 'R1', 'R2' and 'R3', 'R4'. 
-This node subscribe to the boolean `"/load"` topic to indicate that full creation of the map. 
+This node subscribe to the boolean `"/load"` topic to indicate that full creation of the map. <br>
 This is the environment created by the node in which the robot moves
 ![ontology image](https://github.com/tommasodeangeli97/finite-state-machine---security-robot/assets/92479113/3c194e24-fa89-4283-a30a-aa5d9a630170)
 
