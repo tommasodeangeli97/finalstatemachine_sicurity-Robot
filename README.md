@@ -26,3 +26,6 @@ This node subscribe to the boolean `"/load"` topic to indicate that full creatio
 This is a simple Publish/Subscribe node used to simulate the status of the battery.
 The node subscribe to the boolean `"/room"` topic that indicates the presence of the robot inside the 'E' room in order to "charge the battery" (it waits a certain amount of second), once that the battery is full the node publish *False* on the boolean `"/battery"` topic;
 when the robot leaves the 'E' room the code waits a random time before indicating that the battery is low publishing *True* on the `"/battery"` topic.  
+
+# The state machine
+This is the node where the behaviour of the robot is created.
