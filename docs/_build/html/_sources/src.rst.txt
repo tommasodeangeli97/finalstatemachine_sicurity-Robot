@@ -1,0 +1,38 @@
+src package
+===========
+
+Submodules
+----------
+
+src.battery module
+------------------
+
+.. automodule:: src.battery
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+src.map module
+--------------
+
+.. automodule:: src.map
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+src.statemachine module
+-----------------------
+
+.. automodule:: src.statemachine
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: src
+    :members:
+    :undoc-members:
+    :show-inheritance:

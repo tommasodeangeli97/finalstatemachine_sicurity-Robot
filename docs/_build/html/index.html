@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>State machine implementation for a robot moving inside a known environnement &mdash; assignment1expro 1.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            assignment1expro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">State machine implementation for a robot moving inside a known environnement</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#module-src.battery">Battery module</a></li>
+<li><a class="reference internal" href="#module-src.map">Map module</a></li>
+<li><a class="reference internal" href="#module-src.statemachine">State machine module</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">assignment1expro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">State machine implementation for a robot moving inside a known environnement</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="state-machine-implementation-for-a-robot-moving-inside-a-known-environnement">
+<h1>State machine implementation for a robot moving inside a known environnement<a class="headerlink" href="#state-machine-implementation-for-a-robot-moving-inside-a-known-environnement" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+<div class="section" id="module-src.battery">
+<span id="battery-module"></span><h1>Battery module<a class="headerlink" href="#module-src.battery" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="src.battery.main">
+<code class="descclassname">src.battery.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.battery.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>main function in which the value of ‘room’ is checked and if it is True (the robot is in the right room) the robot charge for the indicated time and publishs that the battery is full -/batttrigger=False, if it is False the robot discharge for a random time and publishes the low battery value -/batttrigger=True</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.battery.pos_callback">
+<code class="descclassname">src.battery.</code><code class="descname">pos_callback</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#src.battery.pos_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback function for updating the value of ‘room’</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="src.battery.room">
+<code class="descclassname">src.battery.</code><code class="descname">room</code><em class="property"> = False</em><a class="headerlink" href="#src.battery.room" title="Permalink to this definition">¶</a></dt>
+<dd><p>variable room: boolean variable, True if the robot is actually in the ‘E’ room and can charge itself</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.map">
+<span id="map-module"></span><h1>Map module<a class="headerlink" href="#module-src.map" title="Permalink to this headline">¶</a></h1>
+<dl class="data">
+<dt id="src.map.client">
+<code class="descclassname">src.map.</code><code class="descname">client</code><em class="property"> = &lt;armor_api.armor_client.ArmorClient object&gt;</em><a class="headerlink" href="#src.map.client" title="Permalink to this definition">¶</a></dt>
+<dd><p>client variable that opens the armor client</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.map.loading">
+<code class="descclassname">src.map.</code><code class="descname">loading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.map.loading" title="Permalink to this definition">¶</a></dt>
+<dd><p>main function that initializes the node and the publisher; it loads the ontology and creates the instances and the object proprieties; it disjoints the varius rooms; it calls the visited() function and then it creates and saves in a new ontology; it publishes the True value on the -/load topic</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.map.view_time">
+<code class="descclassname">src.map.</code><code class="descname">view_time</code><span class="sig-paren">(</span><em>time_list</em><span class="sig-paren">)</span><a class="headerlink" href="#src.map.view_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that clear the queried time</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>-time_list the list of queried time stamp</dd>
+<dt>Returns:</dt>
+<dd>the time_stamp usable value</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.map.visited">
+<code class="descclassname">src.map.</code><code class="descname">visited</code><span class="sig-paren">(</span><em>room_list</em><span class="sig-paren">)</span><a class="headerlink" href="#src.map.visited" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that update the object propriety ‘isIn’ for the robot and the two data propriety ‘now’ and ‘visitedAt’; at the end replace the robot in the staring position</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>-room_list the list of the rooms in the ontology without the ‘E’ room</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.statemachine">
+<span id="state-machine-module"></span><h1>State machine module<a class="headerlink" href="#module-src.statemachine" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="src.statemachine.BatteryLow">
+<em class="property">class </em><code class="descclassname">src.statemachine.</code><code class="descname">BatteryLow</code><a class="headerlink" href="#src.statemachine.BatteryLow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that defines the ‘BATTERY_LOW’ status, it checks if the ‘battery’ variable is still ‘True’, in that case it checks the actual position and moves consequently remaining in the ‘BATTERY_LOW’ status: if the robot is in ‘C1’ it moves to the ‘E’ room and publish on the /room topic; if the robot is not in ‘C1’ it chooses the most rapid path to go to the ‘E’ room and changes one room at time; when the ‘battery’ becames ‘False’ the robot goes to the ‘C1’ room and change to ‘PATROLLING_CORRIDOR’ state</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>-smach.State: base state interface</dd>
+<dt>Returns:</dt>
+<dd>-back_to_work: transition condition that changes to ‘PATROLLING_CORRIDOR’
+-allert_battery: transition condition that maintain the ‘BATTERY_LOW’ status</dd>
+</dl>
+<dl class="method">
+<dt id="src.statemachine.BatteryLow.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><em>userdata</em><span class="sig-paren">)</span><a class="headerlink" href="#src.statemachine.BatteryLow.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when executing a state.
+In the base class this raises a NotImplementedError.</p>
+<p>&#64;type ud: L{UserData} structure
+&#64;param ud: Userdata for the scope in which this state is executing</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.statemachine.PatrollingCorridor">
+<em class="property">class </em><code class="descclassname">src.statemachine.</code><code class="descname">PatrollingCorridor</code><a class="headerlink" href="#src.statemachine.PatrollingCorridor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that defines the ‘PATROLLING_CORRIDOR’ state: it checks if the battery is low, in that case the status changes to ‘BATTERY_LOW’, if not, the robot checks its position, if there are urgent rooms and which are the room accessible; if there are urgent rooms and they are accessible the robot changes its position and the status changes to ‘PATROLLING_ROOM’; if there are urgent rooms but the robot isn’t near to them it checks which is the room that is near to the urgent rooms and change its position to this room, it remains in the ‘PATROLLING_CORRIDOR’ status; if there are no urgent rooms the robot prefers to stay in corridors, it changes corridors and remains in the ‘PATROLLING_CORRIDOR’ status</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>-smach.State: base state interface</dd>
+<dt>Returns:</dt>
+<dd>-still_corridor: transition condition that maintain the ‘PATROLLING_CORRIDOR’ status
+-in_room: transition condition that changes to ‘PATROLLING_ROOM’ status
+-allert_battery: transition condition that changes to ‘BATTERY_LOW’ status</dd>
+</dl>
+<dl class="method">
+<dt id="src.statemachine.PatrollingCorridor.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><em>userdata</em><span class="sig-paren">)</span><a class="headerlink" href="#src.statemachine.PatrollingCorridor.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when executing a state.
+In the base class this raises a NotImplementedError.</p>
+<p>&#64;type ud: L{UserData} structure
+&#64;param ud: Userdata for the scope in which this state is executing</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.statemachine.PatrollingRoom">
+<em class="property">class </em><code class="descclassname">src.statemachine.</code><code class="descname">PatrollingRoom</code><a class="headerlink" href="#src.statemachine.PatrollingRoom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that define the ‘PATROLLING_ROOM’ state: the robot chacks if the battery is low, in that case the status changes to ‘BATTERY_LOW’, if not, it waits a certain amount of time then checks in which room it is and which is the near room, it moves to that room and change the status to ‘PATROLLING_CORRIDOR’</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>-smach.State: base state interface</dd>
+<dt>Returns:</dt>
+<dd>-back_to_corridor: transition condition that changes the status in ‘PATROLLING_CORRIDOR’
+-allert_battery: transition condition that changes to ‘BATTERY_LOW’ status</dd>
+</dl>
+<dl class="method">
+<dt id="src.statemachine.PatrollingRoom.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><em>userdata</em><span class="sig-paren">)</span><a class="headerlink" href="#src.statemachine.PatrollingRoom.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when executing a state.
+In the base class this raises a NotImplementedError.</p>
+<p>&#64;type ud: L{UserData} structure
+&#64;param ud: Userdata for the scope in which this state is executing</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.statemachine.WaitMap">
+<em class="property">class </em><code class="descclassname">src.statemachine.</code><code class="descname">WaitMap</code><a class="headerlink" href="#src.statemachine.WaitMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that defines the ‘RECIEVING_MAP’ state, the robot just waits untill the variable ‘ready’ becames ‘True’ in that case the map is loaded and the robot leaves the ‘E’ room to go to the ‘C1’ corridor; it changes the state</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>-smach.State: base state interface</dd>
+<dt>Returns:</dt>
+<dd>-map_not_redy: transition condition that maintain the ‘RECIEVING_MAP’ status active
+-map_redy: transistion condition that change status from ‘RECIEVING MAP’ to ‘PATROLLING_CORRIDOR’</dd>
+</dl>
+<dl class="method">
+<dt id="src.statemachine.WaitMap.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><em>userdata</em><span class="sig-paren">)</span><a class="headerlink" href="#src.statemachine.WaitMap.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when executing a state.
+In the base class this raises a NotImplementedError.</p>
+<p>&#64;type ud: L{UserData} structure
+&#64;param ud: Userdata for the scope in which this state is executing</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="src.statemachine.bat_callback">
+<code class="descclassname">src.statemachine.</code><code class="descname">bat_callback</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#src.statemachine.bat_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback function that changes the ‘battery’ variable</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="src.statemachine.battery">
+<code class="descclassname">src.statemachine.</code><code class="descname">battery</code><em class="property"> = False</em><a class="headerlink" href="#src.statemachine.battery" title="Permalink to this definition">¶</a></dt>
+<dd><p>global variable for the value of the /batttrigger topic</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.statemachine.callback">
+<code class="descclassname">src.statemachine.</code><code class="descname">callback</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#src.statemachine.callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback function that changes the ‘ready’ variable</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.statemachine.check_near">
+<code class="descclassname">src.statemachine.</code><code class="descname">check_near</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#src.statemachine.check_near" title="Permalink to this definition">¶</a></dt>
+<dd><p>funtion that queries all the rooms that are near to the one where the robot is</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>-pos: the actual position of the robot</dd>
+<dt>Returns:</dt>
+<dd>the list of the rooms that share the same door with pos</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.statemachine.check_urgents">
+<code class="descclassname">src.statemachine.</code><code class="descname">check_urgents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.statemachine.check_urgents" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that queries if there are ‘urgent’ room and checkes if the list is empty</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>the list of all the ‘urgent’ rooms in that moment</dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="src.statemachine.client">
+<code class="descclassname">src.statemachine.</code><code class="descname">client</code><em class="property"> = &lt;armor_api.armor_client.ArmorClient object&gt;</em><a class="headerlink" href="#src.statemachine.client" title="Permalink to this definition">¶</a></dt>
+<dd><p>opens the client for all the functions in the code</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.statemachine.main">
+<code class="descclassname">src.statemachine.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.statemachine.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>the main function that initialises the node and the state machine, it declares all the conjunctions between the state, it declares the subscribers</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.statemachine.move">
+<code class="descclassname">src.statemachine.</code><code class="descname">move</code><span class="sig-paren">(</span><em>cr</em>, <em>nr</em><span class="sig-paren">)</span><a class="headerlink" href="#src.statemachine.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that changes the position of the robot</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>-cr: the room that the robot leaves
+-nr: the new room where the robot goes to</dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="src.statemachine.ready">
+<code class="descclassname">src.statemachine.</code><code class="descname">ready</code><em class="property"> = False</em><a class="headerlink" href="#src.statemachine.ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>global variable for the value of the /load topic</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.statemachine.view_time">
+<code class="descclassname">src.statemachine.</code><code class="descname">view_time</code><span class="sig-paren">(</span><em>time_list</em><span class="sig-paren">)</span><a class="headerlink" href="#src.statemachine.view_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that clear the queried time</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>-time_list the list of queried time stamp</dd>
+<dt>Returns:</dt>
+<dd>the time_stamp usable value</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.statemachine.visited">
+<code class="descclassname">src.statemachine.</code><code class="descname">visited</code><span class="sig-paren">(</span><em>n_r</em><span class="sig-paren">)</span><a class="headerlink" href="#src.statemachine.visited" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that update the object propriety ‘isIn’ for the robot and the two data propriety ‘now’ and ‘visitedAt’; at the end replace the robot in the staring position</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>-r_n the new room where the robot is</dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="src.statemachine.wim">
+<code class="descclassname">src.statemachine.</code><code class="descname">wim</code><em class="property"> = ''</em><a class="headerlink" href="#src.statemachine.wim" title="Permalink to this definition">¶</a></dt>
+<dd><p>global variable that indicates the actual position of the robot</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, tommaso de angeli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
