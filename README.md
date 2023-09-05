@@ -19,4 +19,4 @@ The ROOM is a LOCATION with only one DOOR, the CORRIDOR is a LOCATION with at le
 The map node cretes five instances for the class ROOM ['E','R1','R2','R3','R4'] that are connected with three CORRIDOR ['C1','C2','C3']. 
 The 'E' ROOM represent the initial and the charging room and is connected only with the 'C1' corridor.
 The 'C1' corridor is connected with the others two corridors 'C2', 'C3' that have doors in common, respectivily, with 'R1', 'R2' and 'R3', 'R4'. */
-This node subscribe to the boolean "loading" topic to indicate that full creation of the map.
+This node subscribe to the boolean "load" topic to indicate that full creation of the map.
