@@ -1,6 +1,6 @@
 # finite state machine - security robot
 
-*Introduction*
+# *Introduction* #
 
 This repository is a ROS package that contains a software architecture for a surveillance robot.
 The implementation of the architecture is done with a finite state machine for the core behaviour of the robot.
