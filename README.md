@@ -40,6 +40,7 @@ The state machine is created with four state <br>
 The robot listen to the topic `"/batttrigger"` and in the moment that it becames *True* it changes status going in `BATTERY_LOW`.
 * PATROLLING_ROOM: the robot is in this status when he has already reached a room; it listen to the `"/batttrigger"` topic, if the value of `"/batttrigger"` becames *True* the robot change status in `BATTERY_LOW`; it waits few seconds and goes back to the nearest corridor, it changes it's status in `PATROLLING_CORRIDOR`.
 * BATTERY_LOW: wherever the robot is when `"/batttrigger"` becames *True* the status changes to this status; the robot choose the best path to reach the 'E' room, once it is in the 'E' room it publish *True* on the `"/room"` topic; it waits untill the `"/batttrigger"` value becames *False* ,remainig in the `BATTERY_LOW` status, and restart it's journey changing to the `PATROLLING_CORRIDOR` status and publishing *False* on the `"/room"` topic.
+  
   ![graph](https://github.com/tommasodeangeli97/finite-state-machine---security-robot/assets/92479113/b94ba172-11f1-40da-9e2f-3a087a2b8c2d)
 
 
