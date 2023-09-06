@@ -85,3 +85,23 @@ in order to visualize the diagram in an other terminal run <br>
 
  ` rosrun smach_viewer smach_viewer.py `
 
+# *Working hypothesis and environment*
+# System’s features
+The characteristics of the environment and the state machine are been already written, owever there are some features that can be mentioned:
+* The robot, in the `PATROLLING_CORRIDOR` status chooses the next corridor randomly prefering to stay inside the 'C2' and the 'C3' corridor
+* The `"/batttrigger"` topic is watched at beginning of all status giving to the `BATTERY_LOW` status the priority over the other status
+
+# System’s assumpions
+* The map is created and gave to the robot and can't change for any reason.
+* Knowing in advance the map, for searching the fastest path to a urgent room the sistem only compare the adiacent rooms to the position of the robot and the the adiacent room to the urgent room; due to the statics of the map there is always une room in common between the two list.
+* The first corridor outside the 'E' room can be only the 'C1' corridor
+
+# Possible technical Improvements
+* The actual position of the robot could be finded in real time; now the position is saved statically in a global variable
+* Using a loop to find best path to reach an other room could eliminate the second assumpion
+* The communication between nodes could be improved, overall between the `state machine` and the `battery`
+
+# *Authors and contacts
+Author: Tommaso De Angeli <br>
+Email: tommaso.deangeli.97@gmail.com <br>
+Professor: Luca Buoncompagni (https://github.com/buoncubi) and Carmine Recchiuto (https://github.com/CarmineD8)
