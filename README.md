@@ -101,7 +101,7 @@ The characteristics of the environment and the state machine are been already wr
 * Using a loop to find best path to reach an other room could eliminate the second assumpion
 * The communication between nodes could be improved, overall between the `state machine` and the `battery`
 
-# *Authors and contacts
-Author: Tommaso De Angeli <br>
+# *Authors and contacts*
+Author: Tommaso De Angeli (https://github.com/tommasodeangeli97) <br>
 Email: tommaso.deangeli.97@gmail.com <br>
 Professor: Luca Buoncompagni (https://github.com/buoncubi) and Carmine Recchiuto (https://github.com/CarmineD8)
