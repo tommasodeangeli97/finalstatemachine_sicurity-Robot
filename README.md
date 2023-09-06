@@ -43,4 +43,11 @@ The robot listen to the topic `"/batttrigger"` and in the moment that it becames
   
   ![graph](https://github.com/tommasodeangeli97/finite-state-machine---security-robot/assets/92479113/b94ba172-11f1-40da-9e2f-3a087a2b8c2d)
 
+# *Nodes communication*
+In the architecture are present only three topic:
+* `"/room"` : is the topic that communicates between the `state machine` node and the `battery` node, it indicates the presence of the robot inside the 'E' room (the charging room).
+* `"/batttrigger"` : this topic is constantly watched in the state machine node, it indicates if the battery is full or low; this topic communicates between the `state machine` node and the `battery` node.
+* `"/load"` : this topic communicates between the `map` node and the `state machine` node; it indicates the fully creation of the map.
+
+  ![rqt graph](https://github.com/tommasodeangeli97/finite-state-machine---security-robot/assets/92479113/bd61106d-2343-4f24-901b-d1c74b847728)
 
