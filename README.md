@@ -51,3 +51,9 @@ In the architecture are present only three topic:
 
   ![rqt graph](https://github.com/tommasodeangeli97/finite-state-machine---security-robot/assets/92479113/bd61106d-2343-4f24-901b-d1c74b847728)
 
+# *Installation*
+To run this code firstly make sure that you have correctly installed aRMOR (https://github.com/EmaroLab/armor) and SMACH (https://wiki.ros.org/smach). <br>
+Insiede your ROS workspace copy the package <br>
+```python
+git clone
+```
