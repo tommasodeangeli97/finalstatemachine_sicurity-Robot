@@ -25,8 +25,21 @@ This is the environment created by the node in which the robot moves
 
 # The battery
 This is a simple Publish/Subscribe node used to simulate the status of the battery. 
-The node subscribe to the boolean `"/room"` topic that indicates the presence of the robot inside the 'E' room in order to "charge the battery" (it waits a certain amount of second), once that the battery is full the node publish *False* on the boolean `"/battery"` topic;
-when the robot leaves the 'E' room the code waits a random time before indicating that the battery is low publishing *True* on the `"/battery"` topic.  
+The node subscribe to the boolean `"/room"` topic that indicates the presence of the robot inside the 'E' room in order to "charge the battery" (it waits a certain amount of second), once that the battery is full the node publish *False* on the boolean `"/batttrigger"` topic;
+when the robot leaves the 'E' room the code waits a random time before indicating that the battery is low publishing *True* on the `"/batttrigger"` topic.  
 
 # The state machine
 This is the node where the behaviour of the robot is created as it's shown in this video
+
+
+https://github.com/tommasodeangeli97/finite-state-machine---security-robot/assets/92479113/d758c4fd-9dac-4cda-bd89-f6f9d4a813fb
+
+The state machine is created with four state <br>
+* RECEIVING_MAP: In this state the robot waits for the map to be uploaded, it listen to the boolean topic `"/load"` and once it became *True* it change status in `PATROLLING_CORRIDOR`.
+* PATROLLING_CORRIDOR: the robot goes trhough the various corridors and preferes to stay in corridors untill a room becames `URGENT`; when a urgent room is triggered the robot valuates if that room is accessible, if it is so it goes to the room and changes status in `PATROLLING_ROOM`, if it is not it searches for the best path to reach the indicated room, it remains in the `PATROLLING_CORRIDOR` status untill the room is reached; if there are more then one urgent room, the robot chooses the nearest room and preferes to go there. <br>
+The robot listen to the topic `"/batttrigger"` and in the moment that it becames *True* it changes status going in `BATTERY_LOW`.
+* PATROLLING_ROOM: the robot is in this status when he has already reached a room; it listen to the `"/batttrigger"` topic, if the value of `"/batttrigger"` becames *True* the robot change status in `BATTERY_LOW`; it waits few seconds and goes back to the nearest corridor, it changes it's status in `PATROLLING_CORRIDOR`.
+* BATTERY_LOW: wherever the robot is when `"/batttrigger"` becames *True* the status changes to this status; the robot choose the best path to reach the 'E' room, once it is in the 'E' room it publish *True* on the `"/room"` topic; it waits untill the `"/batttrigger"` value becames *False* ,remainig in the `BATTERY_LOW` status, and restart it's journey changing to the `PATROLLING_CORRIDOR` status and publishing *False* on the `"/room"` topic.
+  ![graph](https://github.com/tommasodeangeli97/finite-state-machine---security-robot/assets/92479113/b94ba172-11f1-40da-9e2f-3a087a2b8c2d)
+
+
