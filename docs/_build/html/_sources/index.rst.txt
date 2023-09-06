@@ -21,15 +21,15 @@ Indices and tables
 
 Battery module
 ==============
-.. automodule:: src.battery
+.. automodule:: battery
    :members:
    
 Map module
 ==========
-.. automodule:: src.map
+.. automodule:: map
    :members:
    
 State machine module
 ====================
-.. automodule:: src.statemachine
+.. automodule:: statemachine
    :members:

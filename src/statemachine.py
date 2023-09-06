@@ -208,7 +208,7 @@ class WaitMap(smach.State):
 			
 		else:
 			print(" uploading the map ") 
-			client.call('LOAD','FILE','',['/root/ros_ws/src/assignment1exp/topological_map/new_map.owl', 'http://bnc/exp-rob-lab/2022-23', 'true', 'PELLET', 'false'])
+			client.call('LOAD','FILE','',['/root/ros_ws/src/finite-state-machine---security-robot/topological_map/new_map.owl', 'http://bnc/exp-rob-lab/2022-23', 'true', 'PELLET', 'false'])
 			print ("I'm leaving the E room")
 			client.call('REPLACE', 'OBJECTPROP', 'IND', ['isIn', 'Robot1', 'C1', 'E'])
 			client.call('REASON','','',[''])

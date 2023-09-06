@@ -92,7 +92,7 @@ def loading():
     
     #loading the map statically
     
-    client.call('LOAD','FILE','',['/root/ros_ws/src/assignment1exp/topological_map/topological_map.owl', 'http://bnc/exp-rob-lab/2022-23', 'true', 'PELLET', 'false'])
+    client.call('LOAD','FILE','',['/root/ros_ws/src/finite-state-machine---security-robot/topological_map/topological_map.owl', 'http://bnc/exp-rob-lab/2022-23', 'true', 'PELLET', 'false'])
     
     client.call('ADD','OBJECTPROP','IND',['hasDoor', 'E', 'D1'])
     
@@ -128,7 +128,7 @@ def loading():
     room_list = ['C1','C2','C3','R1','R2','R3','R4']
     visited(room_list)
     
-    client.call('SAVE','','',['/root/ros_ws/src/assignment1exp/topological_map/new_map.owl'])
+    client.call('SAVE','','',['/root/ros_ws/src/finite-state-machine---security-robot/topological_map/new_map.owl'])
     
     print (" Map ready ")
     #while not rospy.is_shutdown():
