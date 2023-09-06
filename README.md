@@ -55,39 +55,39 @@ In the architecture are present only three topic:
 To run this code firstly make sure that you have correctly installed aRMOR (https://github.com/EmaroLab/armor) and SMACH (https://wiki.ros.org/smach). <br>
 Insiede your ROS workspace copy the package <br>
 
-  git clone https://github.com/tommasodeangeli97/finite-state-machine---security-robot/tree/main
+ ` git clone https://github.com/tommasodeangeli97/finite-state-machine---security-robot/tree/main `
   
 <br>
 Make shure that the python nodes are executable <br>
 
-  chmod +x <name_of_file.py>
+ ` chmod +x <name_of_file.py> `
 
 <br>
 Inside the `map.py` code change the root of your package at line 95 <br>
 
-  client.call('LOAD','FILE','',['root_to_your_package/topological_map/topological_map.owl', 'http://bnc/exp-rob-lab/2022-23', 'true', 'PELLET', 'false'])
+`  client.call('LOAD','FILE','',['root_to_your_package/topological_map/topological_map.owl', 'http://bnc/exp-rob-lab/2022-23', 'true', 'PELLET', 'false']) `
 
 and at line 131 <br>
 
-  client.call('SAVE','','',['root_to_your_package/topological_map/new_map.owl'])
+`  client.call('SAVE','','',['root_to_your_package/topological_map/new_map.owl']) `
 
 <br>
 The same inside the `statemachine.py` code at line 211 <br>
 
-  client.call('LOAD','FILE','',['root_to_your_package/topological_map/new_map.owl', 'http://bnc/exp-rob-lab/2022-23', 'true', 'PELLET', 'false'])
+`  client.call('LOAD','FILE','',['root_to_your_package/topological_map/new_map.owl', 'http://bnc/exp-rob-lab/2022-23', 'true', 'PELLET', 'false']) `
 
 <br>
 from the terminal go inside the root of your workspace and do <br>
 
-  catkin_make
+ ` catkin_make `
 
 <br>
 now is possible to to launch the code <br>
 
-  roslaunch finite-state-machine---security-robot state_machine_launcher.launch
+`  roslaunch finite-state-machine---security-robot state_machine_launcher.launch `
 
 <br>
 in order to visualize the diagram in an other terminal run <br>
 
-  rosrun smach_viewer smach_viewer.py 
+ ` rosrun smach_viewer smach_viewer.py `
 
