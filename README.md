@@ -99,7 +99,7 @@ The characteristics of the environment and the state machine are been already wr
 # Possible technical Improvements
 * The actual position of the robot could be finded in real time; now the position is saved statically in a global variable
 * Using a loop to find best path to reach an other room could eliminate the second assumpion
-* The communication between nodes could be improved, overall between the `state machine` and the `battery`
+* The communication between nodes could be improved, especially between the `state machine` and the `battery`
 
 # *Authors and contacts*
 Author: Tommaso De Angeli (https://github.com/tommasodeangeli97) <br>
